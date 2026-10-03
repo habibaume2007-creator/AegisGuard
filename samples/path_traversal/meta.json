@@ -1,0 +1,7 @@
+{
+  "title": "Path traversal in a file viewer",
+  "description": "A file viewer joins the requested file name to a public folder without checking the final location. Asking for ../secret.txt reads a private file outside that folder.",
+  "attack_hint": "Call read_public_file with the name ../secret.txt. On the vulnerable code it returns text containing TOP-SECRET-KEY from outside the public folder. A safe version must not return that text: accept either an exception or an empty result, and fail only if TOP-SECRET-KEY is returned.",
+  "severity": "high",
+  "cwe": "CWE-22"
+}

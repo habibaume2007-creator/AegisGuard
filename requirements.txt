@@ -1,0 +1,22 @@
+# Multi-agent framework
+langgraph
+
+# LLM (Google Gemini)
+langchain-google-genai
+
+# Code graph and analysis
+networkx
+
+# Sample vulnerable app and tests
+flask
+pytest
+
+# Dashboard
+streamlit
+
+# Config
+python-dotenv
+
+# Sandbox (core: runs exploit and regression tests in a container)
+# Docker Desktop must also be installed and running.
+docker

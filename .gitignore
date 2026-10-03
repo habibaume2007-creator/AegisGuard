@@ -1,0 +1,24 @@
+# Virtual environments
+.venv/
+venv/
+
+# Environment secrets
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Testing cache
+.pytest_cache/
+
+# AegisGuard temporary/runtime files
+workspace/
+approved/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+
+memory.db

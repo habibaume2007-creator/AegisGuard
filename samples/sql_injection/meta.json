@@ -1,0 +1,7 @@
+{
+  "title": "SQL injection in a user search",
+  "description": "A search endpoint builds its database query by pasting the user's text into the SQL. Typing ' OR '1'='1 makes it return every user, including the admin.",
+  "attack_hint": "Call search_users with the payload ' OR '1'='1. On the vulnerable code it returns all 3 users; a safe version returns an empty list. Assert that the result is empty.",
+  "severity": "critical",
+  "cwe": "CWE-89"
+}

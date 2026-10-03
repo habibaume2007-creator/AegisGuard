@@ -1,0 +1,106 @@
+{
+  "project": "AegisGuard",
+  "tagline": "Finds, proves, fixes and verifies security bugs, with a human in control",
+  "event": "Final Term Hackathon",
+  "program": "Aspire Pakistan Cohort 11",
+  "team_name": "Sentinel Six",
+  "how_it_works": [
+    "Triage scans the code and finds the risky function and the route that reaches it",
+    "The exploit agent writes an attack test, and the sandbox proves it fails (red)",
+    "The patch agent writes a fix, guided by retrieved security notes (RAG) and past runs (memory)",
+    "The verifier re-runs the attack test and the original tests, which must all pass (green)",
+    "A human reviews the diff and approves, and the run is saved to long-term memory"
+  ],
+  "tech_stack": [
+    {
+      "layer": "Agent orchestration",
+      "tech": "LangGraph",
+      "purpose": "Runs the agents as a graph with retry loops and routing"
+    },
+    {
+      "layer": "LLM",
+      "tech": "Google Gemini (langchain-google-genai)",
+      "purpose": "Writes exploit tests and patches, answers questions"
+    },
+    {
+      "layer": "Code analysis",
+      "tech": "Python ast + NetworkX",
+      "purpose": "Call graph, reachability and vulnerability detection"
+    },
+    {
+      "layer": "Sandbox",
+      "tech": "Docker SDK for Python (local fallback)",
+      "purpose": "Runs generated tests in an isolated container"
+    },
+    {
+      "layer": "Demo apps and tests",
+      "tech": "Flask + pytest",
+      "purpose": "Three intentionally vulnerable sample apps and their regression tests"
+    },
+    {
+      "layer": "RAG",
+      "tech": "TF-IDF retrieval over markdown notes",
+      "purpose": "Finds relevant security guidance, with no extra model needed"
+    },
+    {
+      "layer": "Long-term memory",
+      "tech": "SQLite",
+      "purpose": "Saves every run so later runs can reuse verified fixes"
+    },
+    {
+      "layer": "Dashboard",
+      "tech": "Streamlit + Graphviz",
+      "purpose": "Live logs, call graph, diff view and approval"
+    }
+  ],
+  "team": [
+    {
+      "name": "Hyder Ali",
+      "role": "AI Agents and Prompt Engineering Lead",
+      "focus": "LangGraph agents, prompts and success-rate testing",
+      "links": {
+        "LinkedIn": "https://www.linkedin.com/in/hyder7"
+      }
+    },
+    {
+      "name": "Muhammad Ammar Khan",
+      "role": "Sandbox and Docker Security Lead",
+      "focus": "Docker sandbox and isolation checks",
+      "links": {
+        "LinkedIn": "https://www.linkedin.com/in/muhammad-ammar-khan-b6591a1b2"
+      }
+    },
+    {
+      "name": "Syed Muaviz ur Rehman",
+      "role": "Dashboard and Integration Testing",
+      "focus": "Dashboard pages and end-to-end testing",
+      "links": {
+        "LinkedIn": "https://www.linkedin.com/in/syed-muaviz-ur-rehman"
+      }
+    },
+    {
+      "name": "Filza Syed",
+      "role": "Presentation Lead",
+      "focus": "Security notes for RAG and assistant testing",
+      "links": {
+        "LinkedIn": "https://www.linkedin.com/in/filza-syed-03703b340"
+      }
+    },
+    {
+      "name": "Hina Saeed",
+      "role": "Demo Video and QA Lead",
+      "focus": "Demo video, storyboard and slides",
+      "links": {
+        "LinkedIn": "https://www.linkedin.com/in/hina-saeed-hina-imran-shah-85681b362"
+      }
+    }
+  ],
+  "leader": {
+    "name": "Um e Habiba",
+    "role": "Team Leader",
+    "bio": "Leads planning, coordination, final integration and the live demo",
+    "links": {
+      "LinkedIn": "https://www.linkedin.com/in/umehabiba786"
+    }
+  }
+}
