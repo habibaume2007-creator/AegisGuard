@@ -26,31 +26,24 @@ AegisGuard combines **static analysis, multi-agent AI, RAG, automated verificati
 
 ### 🧭 Project Navigator
 
-[![Overview](https://img.shields.io/badge/Overview-Project-2563EB?style=for-the-badge)](#overview)
-[![Problem](https://img.shields.io/badge/Problem-Security_Gap-DC2626?style=for-the-badge)](#the-problem)
-[![Solution](https://img.shields.io/badge/Solution-AegisGuard-16A34A?style=for-the-badge)](#the-solution)
-[![Workflow](https://img.shields.io/badge/Core-Workflow-0EA5E9?style=for-the-badge)](#core-workflow)
-[![Features](https://img.shields.io/badge/Features-Core_Capabilities-9333EA?style=for-the-badge)](#key-features)
+<div align="center">
 
-[![Tech Stack](https://img.shields.io/badge/Tech_Stack-Architecture-0891B2?style=for-the-badge)](#technology-stack)
-[![Architecture](https://img.shields.io/badge/System-Architecture-4F46E5?style=for-the-badge)](#system-architecture)
-[![Backend Flow](https://img.shields.io/badge/Backend-Connections-0F766E?style=for-the-badge)](#how-the-backend-components-connect)
-[![Multi Agent](https://img.shields.io/badge/Multi--Agent-LangGraph-7C3AED?style=for-the-badge)](#multi-agent-workflow)
-[![RAG](https://img.shields.io/badge/RAG-Knowledge_Layer-D97706?style=for-the-badge)](#rag-implementation)
+[![Overview](https://img.shields.io/badge/Overview-2563EB?style=flat-square)](#overview)
+[![Problem & Solution](https://img.shields.io/badge/Problem_%26_Solution-16A34A?style=flat-square)](#the-problem)
+[![Workflow](https://img.shields.io/badge/Core_Workflow-0EA5E9?style=flat-square)](#core-workflow)
+[![Features](https://img.shields.io/badge/Features-9333EA?style=flat-square)](#key-features)
 
-[![Vulnerabilities](https://img.shields.io/badge/Vulnerability-Coverage-B91C1C?style=for-the-badge)](#supported-vulnerabilities)
-[![Project Structure](https://img.shields.io/badge/Project-Structure-475569?style=for-the-badge)](#project-structure)
-[![Requirements](https://img.shields.io/badge/Requirements-Environment-64748B?style=for-the-badge)](#requirements)
-[![Setup](https://img.shields.io/badge/Setup-Installation-475569?style=for-the-badge)](#installation--setup)
+[![Tech Stack](https://img.shields.io/badge/Tech_Stack-0891B2?style=flat-square)](#technology-stack)
+[![Architecture](https://img.shields.io/badge/System_Architecture-4F46E5?style=flat-square)](#system-architecture)
+[![Backend Flow](https://img.shields.io/badge/Backend_Flow-0F766E?style=flat-square)](#how-the-backend-components-connect)
+[![Multi-Agent & RAG](https://img.shields.io/badge/Multi--Agent_%26_RAG-7C3AED?style=flat-square)](#multi-agent-workflow)
 
-[![Run](https://img.shields.io/badge/Run-Application-0284C7?style=for-the-badge)](#run-the-application)
-[![Demo](https://img.shields.io/badge/Live_Demo-Launch-16A34A?style=for-the-badge)](#live-demo)
-[![Security](https://img.shields.io/badge/Security-Notes-B91C1C?style=for-the-badge)](#security-notes)
-[![Roadmap](https://img.shields.io/badge/Roadmap-Future-0284C7?style=for-the-badge)](#future-roadmap)
-[![Team](https://img.shields.io/badge/Team-AegisGuard-7C3AED?style=for-the-badge)](#team)
-[![Philosophy](https://img.shields.io/badge/Security-Philosophy-111827?style=for-the-badge)](#security-philosophy)
+[![Setup](https://img.shields.io/badge/Setup-475569?style=flat-square)](#installation--setup)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-16A34A?style=flat-square)](#live-demo)
+[![Security](https://img.shields.io/badge/Security_Notes-B91C1C?style=flat-square)](#security-notes)
+[![Roadmap](https://img.shields.io/badge/Roadmap-0284C7?style=flat-square)](#future-roadmap)
 
----
+</div>
 
 ### ⚡ Core Security Flow
 
@@ -63,33 +56,6 @@ AegisGuard combines **static analysis, multi-agent AI, RAG, automated verificati
 > **AI may propose the fix. Evidence should verify it. Humans should approve it.**
 
 </div>
-
----
-
-## Overview
-
-AegisGuard is an AI-assisted application-security prototype designed to move beyond traditional vulnerability detection.
-
-Traditional security tools often focus on:
-
-**Detect → Report**
-
-AegisGuard extends that workflow to:
-
-**Detect → Prove → Retrieve Security Knowledge → Patch → Verify → Remember → Human Approve**
-
-The platform combines:
-
-- 🛡️ Static source-code analysis
-- 🤖 Multi-agent workflow orchestration
-- 🧠 Retrieval-Augmented Generation
-- 🧪 AI-generated security tests
-- 🔧 AI-assisted remediation
-- ✅ Automated verification
-- 💾 Persistent security memory
-- 👤 Human-in-the-loop approval
-
-AegisGuard demonstrates how AI can support a more structured, test-driven, and evidence-based remediation workflow while keeping the final decision under human control.
 
 ---
 
@@ -133,78 +99,35 @@ AegisGuard attempts to answer six key questions:
 
 ## Core Workflow
 
+AegisGuard follows a concise six-stage remediation process:
+
+**TRIAGE → EXPLOIT → CONFIRM → PATCH → VERIFY → HUMAN APPROVAL**
+
 ### 1. Triage
+Uses **Python AST + NetworkX** to detect risky code, identify the vulnerable function, and inspect reachability.
 
-AegisGuard analyzes Python source code using static analysis.
+### 2. Exploit
+Uses **Gemini** to generate a targeted security regression test for trusted demo samples.
 
-The triage stage uses:
+### 3. Confirm
+Runs the generated test to confirm whether the suspected vulnerability can be reproduced.
 
-- Python AST
-- Vulnerability pattern detection
-- Function analysis
-- Route / entry-point detection
-- NetworkX call graph analysis
-- Reachability analysis
+### 4. Patch
+Retrieves relevant **RAG security guidance** and uses Gemini to propose a remediation.
 
-The goal is to identify the vulnerability type, the vulnerable function, and whether the risky function can be reached from an application route or entry point.
+### 5. Verify
+Uses **Pytest + static re-checking** to confirm that the attack is blocked and existing functionality still works.
 
-### 2. Exploit Generation
-
-For trusted demonstration samples, AegisGuard uses AI to generate a targeted security regression test.
-
-The generated test attempts to reproduce the suspected vulnerability.
-
-### 3. Confirmation
-
-The generated exploit test is executed.
-
-If the expected security failure occurs, the finding can be treated as confirmed.
-
-**Static Finding → Generated Security Test → Expected Failure → Vulnerability Confirmed**
-
-### 4. Patch Generation
-
-Once a vulnerability is confirmed, AegisGuard retrieves relevant security guidance through RAG and provides that context to the AI model before patch generation.
-
-The patch stage can use:
-
-- Vulnerable source code
-- Detected vulnerability type
-- Retrieved defensive guidance
-- Previous successful fixes
-- Previous failed attempts
-
-### 5. Verification
-
-AegisGuard does not stop after generating a patch.
-
-The proposed remediation is validated using:
-
-- Security regression test
-- Original regression tests
-- Static security re-check
-
-A successful remediation should satisfy:
-
-- ✅ Original attack is blocked
-- ✅ Existing functionality still works
-- ✅ Vulnerable static pattern is no longer detected
+### 6. Human Approval
+Presents the verified remediation for final human review and approval.
 
 ### Core Concept
 
 **🔴 RED → PATCH → 🟢 GREEN**
 
 - **RED:** Vulnerability reproduced
-- **PATCH:** Remediation proposed
-- **GREEN:** Attack blocked and regression tests pass
-
-### 6. Human Approval
-
-Even after automated verification, the final decision remains with the human reviewer.
-
-**AI Suggestion → Automated Verification → Human Review → Approval**
-
----
+- **PATCH:** Remediation generated
+- **GREEN:** Security test and regression tests pass
 
 ## Key Features
 
@@ -665,18 +588,24 @@ Planned improvements include:
 
 ## Team
 
-### AegisGuard Team
+### Sentinel Six — AegisGuard Team
 
 Developed for the **Final Term Hackathon — Aspire Pakistan Cohort 11**
 
-| Member | Role |
-|---|---|
-| Team Leader | Agent workflow, backend integration, architecture |
-| Team Member | UI/UX |
-| Team Member | Testing / Documentation |
-| Team Member | Presentation / Demo |
+| Team Member | Role | Main Contribution |
+|---|---|---|
+| **Um e Habiba** | **Team Leader, Lead Developer & System Architect** | Overall project architecture, agent workflow, backend integration, LangGraph orchestration, RAG integration, system design, coordination, and final integration |
+| **Hyder Ali** | **Technical Contributor — AI & Agent Orchestration** | Support for AI workflow, agent-based architecture, technical implementation, and application development |
+| **Muhammad Ammar Khan** | **Software Engineering, UI/UX & Testing Contributor** | Backend support, UI/UX improvements, testing, debugging, and verification of application behavior |
+| **Syed Muaviz ur Rehman** | **Technical Contributor & Verification Support** | GitHub/documentation support, technical implementation, sandbox/verification support, and project integration |
+| **Filza Syed** | **Presentation & Junior Technical Contributor** | Presentation/slides, security-content support, testing assistance, and project presentation preparation |
+| **Hina Saeed** | **Demo & Documentation Lead** | Demo video, project documentation, pitch support, and presentation of the application workflow |
 
-Replace these placeholders with your actual team members and roles.
+### Team Goal
+
+The team collaborated to build AegisGuard as an **AI-assisted secure-code remediation prototype** that combines static analysis, multi-agent orchestration, RAG-based security guidance, automated verification, long-term memory, and human approval.
+
+> **Built by Sentinel Six — combining AI, software engineering, cybersecurity, testing, and human oversight into one verified remediation workflow.**
 
 ---
 
