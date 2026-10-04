@@ -1,0 +1,30 @@
+# AegisGuard UI theme (visual only; no behavior settings).
+# Pins the app to a light, consistent look so native Streamlit widgets
+# (bordered cards, tables, dataframes, alerts, dropdowns) match the custom
+# styling in ui_common.py, even on machines set to dark mode.
+# Safe to delete: the app runs exactly the same without it.
+
+[theme]
+base = "light"
+primaryColor = "#2f54d6"
+backgroundColor = "#f5f7fb"
+secondaryBackgroundColor = "#eef2f7"
+textColor = "#0f172a"
+linkColor = "#2f54d6"
+borderColor = "#e3e8ef"
+baseRadius = "0.75rem"
+buttonRadius = "0.625rem"
+showWidgetBorder = true
+showSidebarBorder = true
+codeBackgroundColor = "#f8fafc"
+dataframeBorderColor = "#e3e8ef"
+dataframeHeaderBackgroundColor = "#f1f5f9"
+metricValueFontSize = "1.75rem"
+
+# Inter is loaded from Google Fonts when online;
+# offline it falls back to the system sans-serif.
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap, sans-serif"
+
+[theme.sidebar]
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f1f5f9"
